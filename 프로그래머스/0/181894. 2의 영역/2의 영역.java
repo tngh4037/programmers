@@ -32,3 +32,15 @@ class Solution {
         return nums.stream().mapToInt(Integer::intValue).toArray();
     }
 }
+
+/*
+import java.util.*;
+import java.util.stream.Collectors;
+
+class Solution {
+    public List<Integer> solution(int[] arr) {
+        List<Integer> list = Arrays.stream(arr).boxed().collect(Collectors.toList());
+        return list.contains(2) ? list.subList(list.indexOf(2), list.lastIndexOf(2) + 1) : Arrays.asList(-1);
+    }
+}
+*/
