@@ -1,19 +1,20 @@
 class Solution {
     public int solution(int a, int b, int n) {
-        int answer = 0;
+        int receiveSum = 0;
         
         while(true) {
             int mod = n / a;
             int divide = n % a;
+            int receive = (mod * b); 
             
-            answer = answer + ((n / a) * b);
+            receiveSum = receiveSum + receive;
             
-            n = ((n / a) * b) + divide;
+            n = receive + divide;
             if (n < a) {
                 break;
             }
         }
         
-        return answer;
+        return receiveSum;
     }
 }
