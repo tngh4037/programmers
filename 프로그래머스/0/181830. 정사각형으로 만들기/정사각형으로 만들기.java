@@ -1,14 +1,8 @@
 class Solution {
     public int[][] solution(int[][] arr) {
-        int[][] answer;
+        int maxCount = Math.max(arr.length, arr[0].length);
         
-        int rowCount = arr.length;
-        int columnCount = arr[0].length;
-        if (rowCount >= columnCount) {
-            answer = new int[rowCount][rowCount];
-        } else {
-            answer = new int[columnCount][columnCount];
-        }
+        int[][] answer = new int[maxCount][maxCount];
         
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
