@@ -6,7 +6,7 @@ class Solution {
         for (String target: babbling) {
             String str = "";
             
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < words.length; i++) {
                 for (String word: words) {
                     if (target.indexOf(word) == 0) {
                         target = target.replace(word, "");
