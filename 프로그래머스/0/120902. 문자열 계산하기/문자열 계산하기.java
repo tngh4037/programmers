@@ -1,19 +1,18 @@
 class Solution {
     public int solution(String my_string) {
-
-        int answer = 0;
-        String[] calNum = my_string.split(" ");
-        answer += Integer.parseInt(calNum[0]);
+        String[] strs = my_string.split(" ");
+        int num = Integer.parseInt(strs[0]);
         
-        for(int i = 1 ; i < calNum.length ; i++){
-            if(i%2 != 0){
-                if(calNum[i].equals("+")){
-                    answer += Integer.parseInt(calNum[i+1]);
+        for (int i = 1; i < strs.length; i++) {
+            if (i % 2 != 0) {
+                if (strs[i].equals("+")) {
+                    num += Integer.parseInt(strs[i+1]);
                 } else {
-                    answer -= Integer.parseInt(calNum[i+1]);
+                    num -= Integer.parseInt(strs[i+1]);
                 }
             }
         }
-        return answer;
+
+        return num;
     } 
 }
