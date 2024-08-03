@@ -6,7 +6,6 @@ class Solution {
         int n1 = n;
         int n2 = n;
         while (true) {
-            boolean exist = false;
             for (int i = 0; i < array.length; i++) {
                 if (array[i] == n1) {
                     targets.add(array[i]);
