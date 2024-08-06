@@ -6,8 +6,8 @@ class Solution {
         
         Set<Target> result = new HashSet<>();
         for (int[] line: lines) {
-            int start = line[0];  // 0
-            int end = line[1];  // 5
+            int start = line[0];
+            int end = line[1];
             
             for (int i = start; i < end; i++) {
                 Target target = new Target(i, i+1);
@@ -18,7 +18,6 @@ class Solution {
                 }
             }
         }
-        
         
         return answer;
     }
