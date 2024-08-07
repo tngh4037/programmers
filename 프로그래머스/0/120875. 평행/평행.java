@@ -1,6 +1,6 @@
 class Solution {
     public int solution(int[][] dots) {
-int x1 = dots[0][0];
+        int x1 = dots[0][0];
         int y1 = dots[0][1];
         int x2 = dots[1][0];
         int y2 = dots[1][1];
@@ -25,3 +25,6 @@ int x1 = dots[0][0];
         return answer;
     }
 }
+
+// 두 직선이 서로 평행하려면 기울기가 같아야 한다.
+// 기울기: [y] 값의 증가량을 / [x] 값의 증가량으로 나눈 값.
