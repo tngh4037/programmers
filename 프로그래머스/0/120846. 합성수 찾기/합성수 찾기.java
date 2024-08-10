@@ -9,13 +9,14 @@ class Solution {
                 if (i % j == 0) {
                     count++;
                 }
-            }
-            
-            if (count >= 3) {
-                answer++;
+                
+                if (count >= 3) {
+                    answer++;
+                    break;
+                }
             }
         }
-
+        
         return answer;
     }
 }
