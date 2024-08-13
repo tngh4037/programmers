@@ -1,0 +1,19 @@
+-- 코드를 작성해주세요
+SELECT ID, EMAIL, FIRST_NAME, LAST_NAME
+FROM DEVELOPERS
+WHERE ( 
+    SKILL_CODE & (SELECT CODE FROM SKILLCODES WHERE NAME = 'Python') 
+    OR
+    SKILL_CODE & (SELECT CODE FROM SKILLCODES WHERE NAME = 'C#') 
+)
+ORDER BY ID;
+
+
+--           100  C++
+--         10000  JavaScript
+--      10000000  Java
+--     100000000  Python
+--    1000000000  C#
+--   10000000000  React
+-- 1000000000000  Vue
+
