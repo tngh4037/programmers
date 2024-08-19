@@ -12,7 +12,7 @@ class Solution {
                 int code = (int) c;
                 if (code != 48 && code != 53) {
                     str = null;
-                    continue;
+                    break;
                 }
             }
             
