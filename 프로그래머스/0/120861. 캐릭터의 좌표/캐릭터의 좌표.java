@@ -13,27 +13,25 @@ class Solution {
             } else if(key.equals("down")) {
                 vertical--;
             }
-            
                     
-        int horizent_length = board[0] / 2;
-        if (Math.abs(horizent) > horizent_length) {
-            if (horizent < 0) {
-                horizent = (-1) * horizent_length;
-            } else {
-                horizent = horizent_length;
+            int horizent_length = board[0] / 2;
+            if (Math.abs(horizent) > horizent_length) {
+                if (horizent < 0) {
+                    horizent = (-1) * horizent_length;
+                } else {
+                    horizent = horizent_length;
+                }
             }
-        }
-        
-        int vertical_length = board[1] / 2;
-        if (Math.abs(vertical) > vertical_length) {
-            if (vertical < 0) {
-                vertical = (-1) * vertical_length;
-            } else {
-                vertical = vertical_length;
-            }
-        }
-        }
 
+            int vertical_length = board[1] / 2;
+            if (Math.abs(vertical) > vertical_length) {
+                if (vertical < 0) {
+                    vertical = (-1) * vertical_length;
+                } else {
+                    vertical = vertical_length;
+                }
+            }
+        }
         
         return new int[]{horizent, vertical};
     }
