@@ -1,28 +1,28 @@
 -- 코드를 입력하세요
 
-SELECT X.HISTORY_ID, FLOOR(X.FEE) AS FEE
-FROM (
 
 SELECT B.HISTORY_ID,
        CASE 
-            WHEN DATEDIFF(END_DATE, START_DATE)+1 >= 90 THEN (A.DAILY_FEE - (A.DAILY_FEE * (SELECT ROUND(DISCOUNT_RATE / 100, 2) 
-FROM CAR_RENTAL_COMPANY_DISCOUNT_PLAN
-WHERE DURATION_TYPE = '90일 이상'
-AND CAR_TYPE = '트럭'))) * (DATEDIFF(END_DATE, START_DATE) + 1)
-            WHEN DATEDIFF(END_DATE, START_DATE)+1 >= 30 THEN (A.DAILY_FEE - (A.DAILY_FEE * (SELECT ROUND(DISCOUNT_RATE / 100, 2) 
-FROM CAR_RENTAL_COMPANY_DISCOUNT_PLAN
-WHERE DURATION_TYPE = '30일 이상'
-AND CAR_TYPE = '트럭'))) * (DATEDIFF(END_DATE, START_DATE) + 1)
-            WHEN DATEDIFF(END_DATE, START_DATE)+1 >= 7 THEN (A.DAILY_FEE - (A.DAILY_FEE * (SELECT ROUND(DISCOUNT_RATE / 100, 2) 
-FROM CAR_RENTAL_COMPANY_DISCOUNT_PLAN
-WHERE DURATION_TYPE = '7일 이상'
-AND CAR_TYPE = '트럭'))) * (DATEDIFF(END_DATE, START_DATE) + 1)
-            ELSE A.DAILY_FEE * (DATEDIFF(END_DATE, START_DATE)+1)
+            WHEN DATEDIFF(END_DATE, START_DATE)+1 >= 90 
+                THEN FLOOR((A.DAILY_FEE - (A.DAILY_FEE * (SELECT ROUND(DISCOUNT_RATE / 100, 2) 
+                                                    FROM CAR_RENTAL_COMPANY_DISCOUNT_PLAN
+                                                    WHERE DURATION_TYPE = '90일 이상'
+                                                    AND CAR_TYPE = '트럭'))) * (DATEDIFF(END_DATE, START_DATE) + 1))
+            WHEN DATEDIFF(END_DATE, START_DATE)+1 >= 30 
+                THEN FLOOR((A.DAILY_FEE - (A.DAILY_FEE * (SELECT ROUND(DISCOUNT_RATE / 100, 2) 
+                                                    FROM CAR_RENTAL_COMPANY_DISCOUNT_PLAN
+                                                    WHERE DURATION_TYPE = '30일 이상'
+                                                    AND CAR_TYPE = '트럭'))) * (DATEDIFF(END_DATE, START_DATE) + 1))
+            WHEN DATEDIFF(END_DATE, START_DATE)+1 >= 7 
+                THEN FLOOR((A.DAILY_FEE - (A.DAILY_FEE * (SELECT ROUND(DISCOUNT_RATE / 100, 2) 
+                                                    FROM CAR_RENTAL_COMPANY_DISCOUNT_PLAN
+                                                    WHERE DURATION_TYPE = '7일 이상'
+                                                    AND CAR_TYPE = '트럭'))) * (DATEDIFF(END_DATE, START_DATE) + 1))
+            ELSE FLOOR(A.DAILY_FEE * (DATEDIFF(END_DATE, START_DATE)+1))
        END AS FEE
 FROM CAR_RENTAL_COMPANY_CAR A, CAR_RENTAL_COMPANY_RENTAL_HISTORY B
 WHERE A.CAR_ID = B.CAR_ID
 AND A.CAR_TYPE = '트럭'
-    ) X
 ORDER BY 2 DESC, 1 DESC;
     
 
