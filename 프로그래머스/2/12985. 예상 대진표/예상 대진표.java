@@ -10,26 +10,18 @@ class Solution
         }
 
         int round = 1;
-        boolean matchA = false;
-        boolean matchB = false;
         List<Integer> temp = new ArrayList<>();
-        
         while (true) {
             
             for (int i = 0; i < candidates.size(); i++) {
-                matchA = false;
-                matchB = false;
+                boolean match = false;
                 
-                if (candidates.get(i) == a) {
-                    matchA = true;
-                }
-                
-                if (candidates.get(i) == b) {
-                    matchB = true;
+                if (candidates.get(i) == a || candidates.get(i) == b) {
+                    match = true;
                 }
                 
                 if (i % 2 != 0) {
-                    if (matchA || matchB) {
+                    if (match) {
                         int beforeValue = temp.get(temp.size() - 1);
                         if (beforeValue == a || beforeValue == b) {
                             return round;
