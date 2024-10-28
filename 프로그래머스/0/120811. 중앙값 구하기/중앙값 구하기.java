@@ -2,10 +2,8 @@ import java.util.*;
 
 class Solution {
     public int solution(int[] array) {
-        int middleIndex = array.length / 2;
+        int[] sortedArray = Arrays.stream(array).sorted().toArray();
         
-        Arrays.sort(array);
-        
-        return array[middleIndex];
+        return sortedArray[(array.length / 2)];
     }
 }
