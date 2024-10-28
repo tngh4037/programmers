@@ -1,23 +1,21 @@
 class Solution {
     boolean solution(String s) {
-        int leftCount = 0;
-        String[] strArr = s.split("");
-        for (int i = 0; i < strArr.length; i++) {
-            if (strArr[i].equals("(")) {
-                leftCount++;
-            } else {
-                leftCount--;
+        int openCount = 0;
+        for (int i = 0; i < s.length(); i++) {
+            String str = s.substring(i, i+1);
+            if (str.equals("(")) {
+                openCount++;
             }
             
-            if (leftCount < 0) {
-                return false;
+            if (str.equals(")")) {
+                if (openCount < 1) {
+                    return false;
+                }
+                
+                openCount--;
             }
         }
-        
-        if (leftCount != 0) {
-            return false;
-        }
 
-        return true;
+        return openCount == 0;
     }
 }
