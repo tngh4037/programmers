@@ -1,15 +1,12 @@
-import java.util.*;
-
 class Solution {
     public int[] solution(long n) {
-        StringBuilder sb = new StringBuilder(String.valueOf(n)).reverse();
-        String str = sb.toString();
+        String str = String.valueOf(n);
         
-        List<Integer> arrs = new ArrayList<>();
-        for (char chr: str.toCharArray()) {
-            arrs.add(chr - '0');
-        }
-        
-        return arrs.stream().mapToInt(Integer::intValue).toArray();
+        StringBuilder sb = new StringBuilder(str);
+        sb.reverse();
+    
+        str = sb.toString();
+
+        return str.chars().map(s -> s - '0').toArray();
     }
 }
