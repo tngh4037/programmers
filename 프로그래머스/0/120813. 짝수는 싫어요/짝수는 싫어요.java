@@ -1,12 +1,10 @@
-import java.util.*;
 import java.util.stream.*;
 
 class Solution {
     public int[] solution(int n) {
-        int[] answer = answer = IntStream.rangeClosed(1, n)
-            .filter(i -> i % 2 != 0)
+
+        return IntStream.rangeClosed(1, n)
+            .filter(v -> v % 2 == 1)
             .toArray();
-        
-        return answer;
     }
 }
