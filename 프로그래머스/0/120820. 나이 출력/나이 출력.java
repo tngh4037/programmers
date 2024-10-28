@@ -1,5 +1,7 @@
+import java.time.*;
+
 class Solution {
     public int solution(int age) {
-        return 2022 - age + 1;
+        return (LocalDate.now().getYear() - age) - 1;
     }
 }
