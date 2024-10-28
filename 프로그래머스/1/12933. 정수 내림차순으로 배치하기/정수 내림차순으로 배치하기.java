@@ -1,15 +1,12 @@
 import java.util.*;
+import java.util.stream.*;
 
 class Solution {
     public long solution(long n) {
-        String[] strArr = String.valueOf(n).split("");
-        Arrays.sort(strArr);
+        String str = String.valueOf(n);
         
-        StringBuilder sb = new StringBuilder();
-        for (String str: strArr) {
-            sb.append(str);
-        }
+        str = Arrays.stream(str.split("")).sorted(Comparator.reverseOrder()).collect(Collectors.joining());
         
-        return Long.parseLong(sb.reverse().toString());
+        return Long.parseLong(str);
     }
 }
