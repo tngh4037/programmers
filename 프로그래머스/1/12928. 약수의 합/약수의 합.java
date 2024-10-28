@@ -1,13 +1,9 @@
+import java.util.stream.IntStream;
+
 class Solution {
     public int solution(int n) {
-        int answer = 0;
-
-        for (int i = n; i > 0; i--) {
-            if (n % i == 0) { 
-                answer += i;
-            }
-        }
-        
-        return answer;
+        return IntStream.rangeClosed(1, n)
+            .filter(v -> n % v == 0)
+            .sum();
     }
 }
