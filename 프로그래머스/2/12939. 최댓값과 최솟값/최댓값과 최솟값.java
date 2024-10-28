@@ -1,20 +1,11 @@
+import java.util.*;
 class Solution {
     public String solution(String s) {
-        String answer = "";
-        
         String[] strArr = s.split(" ");
-        int minValue = Integer.parseInt(strArr[0]);
-        for (int i = 1; i < strArr.length; i++) {
-            minValue = Math.min(minValue, Integer.parseInt(strArr[i]));
-        }
         
-        int maxValue = Integer.parseInt(strArr[0]);
-        for (int i = 1; i < strArr.length; i++) {
-            maxValue = Math.max(maxValue, Integer.parseInt(strArr[i]));
-        }
+        int minValue = Arrays.stream(strArr).mapToInt(Integer::parseInt).min().orElse(0);
+        int maxValue = Arrays.stream(strArr).mapToInt(Integer::parseInt).max().orElse(0);
         
-        answer = "" + minValue + " " + maxValue;
-        
-        return answer;
+        return minValue + " " + maxValue;
     }
 }
