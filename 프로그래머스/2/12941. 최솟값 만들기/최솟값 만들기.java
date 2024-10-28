@@ -1,16 +1,19 @@
-import java.util.Arrays;
+import java.util.*;
+import java.util.stream.*;
 
-class Solution {
-    public int solution(int[] A, int[] B) {
+class Solution
+{
+    public int solution(int[] A, int[] B)
+    {
         int answer = 0;
-        
+
         Arrays.sort(A);
         Arrays.sort(B);
         
         for (int i = 0; i < A.length; i++) {
-            answer += A[i] * B[B.length - i - 1];
+            answer = answer + (A[i] * B[B.length - (i + 1)]);
         }
-        
+
         return answer;
     }
 }
