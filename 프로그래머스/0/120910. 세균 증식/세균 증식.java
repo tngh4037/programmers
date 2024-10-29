@@ -1,7 +1,9 @@
 class Solution {
     public int solution(int n, int t) {
-      
-        int result = (int) (n * Math.pow(2, t));
-        return result;
+        for (int i = 0; i < t; i++) {
+            n = n * 2;
+        }
+        
+        return n;
     }
 }
