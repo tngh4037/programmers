@@ -1,15 +1,20 @@
+import java.util.stream.*;
+
 class Solution {
     public String solution(String my_string) {
-        StringBuilder sb = new StringBuilder();
-        for (String str: my_string.split("")) {
-           int code = (int) str.charAt(0);
-           if (code >= 97 && code <= 122) {
-               sb.append(str.toUpperCase());
-           } else {
-               sb.append(str.toLowerCase());
-           }
-        }
-        
-        return sb.toString();
+     
+        return my_string.chars()
+            .mapToObj(c -> (char) c)
+            .map(String::valueOf)
+            .map(s -> {
+                int code = s.charAt(0);
+                
+                if (code >= 'a' && code <= 'z') {
+                    return s.toUpperCase();
+                } else {
+                    return s.toLowerCase();
+                }
+            })
+            .collect(Collectors.joining());
     }
 }
