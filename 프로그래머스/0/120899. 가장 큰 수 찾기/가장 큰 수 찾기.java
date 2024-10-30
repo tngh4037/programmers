@@ -1,19 +1,18 @@
-import java.util.*;
+import java.util.Arrays;
 
 class Solution {
     public int[] solution(int[] array) {
-        int[] copyArr = Arrays.copyOf(array, array.length);
+        int maxValue = Arrays.stream(array)
+            .max().orElse(-1);
         
-        Arrays.sort(copyArr);
-        
-        int maxValue = copyArr[copyArr.length-1];
-        
+        int index = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] == maxValue) {
-                return new int[]{maxValue, i};
+                index = i;
+                break;
             }
         }
         
-        return new int[]{};
+        return new int[]{maxValue, index};
     }
 }
