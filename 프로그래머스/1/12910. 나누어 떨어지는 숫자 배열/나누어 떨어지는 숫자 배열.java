@@ -1,20 +1,14 @@
-import java.util.*;
+import java.util.stream.*;
 
 class Solution {
     public int[] solution(int[] arr, int divisor) {
-        List<Integer> result = new ArrayList<>();
-        for(int su: arr) {
-            if (su % divisor == 0) {
-                result.add(su);
-            }
-        }
+        int[] answer = {};
         
-        if (result.size() == 0) {
-            return new int[]{-1};
-        }
+        arr = IntStream.of(arr)
+            .filter(num -> num % divisor == 0)
+            .sorted()
+            .toArray();
         
-        Collections.sort(result);
-        
-        return result.stream().mapToInt(Integer::intValue).toArray();
+        return arr.length == 0 ? new int[]{-1} : arr;
     }
 }
