@@ -1,11 +1,11 @@
+import java.util.*;
+import java.util.stream.*;
+
 class Solution {
     public String solution(String[] seoul) {
-        for (int i = 0; i < seoul.length; i++) {
-            if (seoul[i].equals("Kim")) {
-                return "김서방은 " + i +"에 있다";
-            }
-        }
+        List<String> slist = Arrays.stream(seoul)
+            .collect(Collectors.toList());
         
-        return null;
+        return "김서방은 " + slist.indexOf("Kim") + "에 있다";
     }
 }
