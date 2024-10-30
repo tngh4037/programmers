@@ -1,14 +1,19 @@
+import java.util.stream.*;
 import java.util.*;
 
 class Solution {
     public int[] solution(int[] arr) {
-        List<Integer> lists = new ArrayList<>();
-        for (int su: arr) {
-            for (int i = 0; i < su; i++) {
-                lists.add(su);
+        int[] answer = new int[IntStream.of(arr).sum()];
+        
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < arr.length; i++) {
+            int num = arr[i];
+            
+            for (int j = 0; j < num; j++) {
+                result.add(num);
             }
         }
         
-        return lists.stream().mapToInt(Integer::intValue).toArray();
+        return result.stream().mapToInt(Integer::intValue).toArray();
     }
 }
