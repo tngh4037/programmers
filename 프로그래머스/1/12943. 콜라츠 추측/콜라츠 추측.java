@@ -1,33 +1,22 @@
 class Solution {
     public int solution(int num) {
-        if (num == 1) {
+        long number = num;
+        if (number == 1) {
             return 0;
         }
         
-        int loop = 0;
-        long su = num;
-        while(true) {
-            if (su % 2 == 0) {
-                su = su / 2;
+        for (int i = 1; i <= 500; i++) {
+            if (number % 2 == 0) {
+                number = number / 2;
             } else {
-                su = (su * 3) + 1;
+                number = (number * 3) + 1;
             }
             
-            loop++;
-            
-            if (su == 1) {
-                break;
-            }
-            
-            if (loop == 500) {
-                break;
+            if (number == 1) {
+                return i;
             }
         }
-
-        if (su != 1) {
-            return -1;
-        }
-
-        return loop;
+        
+        return -1;
     }
 }
