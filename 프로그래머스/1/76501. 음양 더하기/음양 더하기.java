@@ -1,14 +1,11 @@
 class Solution {
     public int solution(int[] absolutes, boolean[] signs) {
-        int sum = 0;
-        for (int i = 0; i < signs.length; i++) {
-            if (signs[i]) {
-                sum = sum + absolutes[i];
-            } else {
-                sum = sum + ((-1) * absolutes[i]);
-            }
+        int answer = 0;
+        
+        for (int i = 0; i < absolutes.length; i++) {
+            answer = answer + ((signs[i] ? 1 : -1) * absolutes[i]);
         }
         
-        return sum;
+        return answer;
     }
 }
