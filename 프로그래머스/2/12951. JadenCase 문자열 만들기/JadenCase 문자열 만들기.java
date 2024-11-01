@@ -1,30 +1,29 @@
+import java.util.Arrays;
+import java.util.stream.*;
+
 class Solution {
     public String solution(String s) {
-        String answer = "";
+        s = s.toLowerCase();
         
         String[] strArr = s.split("");
-        boolean isFirst = true;
-        for (String str: strArr) {
-            if (str.equals(" ")) {
-                answer += str;
-                isFirst = true;
+        
+        for (int i = 0; i < strArr.length; i++) {
+            if (i == 0) {
+                strArr[0] = strArr[0].toUpperCase();
                 continue;
             }
             
-            if (isFirst) {
-                int code = (int) str.charAt(0);
-                if (code >= 48 && code <= 57) { // 0 ~ 9
-                    answer += str;
-                } else {
-                    answer += str.toUpperCase();
-                }
-                
-                isFirst = false;
-            } else {
-                answer += str.toLowerCase();
+            char beforeChar = strArr[i-1].charAt(0);
+            if (beforeChar >= '0' && beforeChar <= '9') {
+                continue;
+            }
+            
+            if (beforeChar == ' ') {
+                strArr[i] = strArr[i].toUpperCase();
             }
         }
-        
-        return answer;
+
+        return Arrays.stream(strArr).collect(Collectors.joining());
     }
+    
 }
