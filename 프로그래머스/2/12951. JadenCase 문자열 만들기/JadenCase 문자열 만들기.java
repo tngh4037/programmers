@@ -14,10 +14,6 @@ class Solution {
             }
             
             char beforeChar = strArr[i-1].charAt(0);
-            if (beforeChar >= '0' && beforeChar <= '9') {
-                continue;
-            }
-            
             if (beforeChar == ' ') {
                 strArr[i] = strArr[i].toUpperCase();
             }
