@@ -1,19 +1,17 @@
-import java.util.stream.*;
+import java.util.Arrays;
 
 class Solution {
     public int[] solution(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] >= 50) {
-                if (arr[i] % 2 == 0) {
-                    arr[i] /= 2;
-                }
-            } else {
-                 if (arr[i] % 2 != 0) {
-                    arr[i] *= 2;
-                }
-            }
-        }
         
-        return arr;
+        return Arrays.stream(arr)
+            .map(i -> {
+               if (i >= 50 && i % 2 == 0) {
+                   return i / 2;
+               } else if (i < 50 && i % 2 != 0) {
+                   return i * 2;
+               }
+                
+                return i;
+            }).toArray();
     }
 }
