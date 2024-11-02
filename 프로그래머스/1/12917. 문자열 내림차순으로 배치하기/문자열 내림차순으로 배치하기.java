@@ -1,21 +1,11 @@
-import java.util.stream.*;
+import java.util.Arrays;
 
 class Solution {
     public String solution(String s) {
+        char[] result = s.toCharArray();
         
-        String upperString = s.chars()
-            .filter(c -> c >= 'A' && c <= 'Z')
-            .sorted()
-            .mapToObj(c -> String.valueOf((char) c))
-            .collect(Collectors.joining());
+        Arrays.sort(result);
         
-        String lowerString = s.chars()
-            .filter(c -> c >= 'a' && c <= 'z')
-            .sorted()
-            .mapToObj(c -> String.valueOf((char) c))
-            .collect(Collectors.joining());
-        
-        return new StringBuilder(lowerString).reverse().toString() + 
-            new StringBuilder(upperString).reverse().toString();
+        return new StringBuilder(new String(result)).reverse().toString();
     }
 }
