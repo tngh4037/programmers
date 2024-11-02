@@ -1,14 +1,17 @@
+import java.util.stream.*;
+
 class Solution {
     public int solution(int[] num_list) {
-        int evenSum = 0;
-        int oddSum = 0;
-        for (int i = 0; i < num_list.length; i++) {
-            if (i % 2 == 0) {
-                evenSum += num_list[i];
-            } else {
-                oddSum += num_list[i];
-            }
-        } 
+        
+        int evenSum = IntStream.range(0, num_list.length)
+            .filter(i -> i % 2 == 0)
+            .map(i -> num_list[i])
+            .sum();
+        
+        int oddSum =IntStream.range(0, num_list.length)
+            .filter(i -> i % 2 != 0)
+            .map(i -> num_list[i])
+            .sum();
         
         return evenSum > oddSum ? evenSum : oddSum;
     }
