@@ -1,26 +1,22 @@
+import java.util.stream.*;
+
 class Solution {
     public int solution(int left, int right) {
-        int answer = 0;
-        
-        for (int i = left; i <= right; i++) {
-            if (targetPlus(i)) {
-                answer = answer + i;
-            } else {
-                answer = answer + ((-1) * i);
-            }
-        }
-        
-        return answer;
+        return IntStream.rangeClosed(left, right)
+            .map(i -> getResult(i))
+            .sum();
     }
     
-    private boolean targetPlus(int su) {
+    public int getResult(int target) {
         int count = 0;
-        for (int i = 1; i <= su; i++) {
-            if (su % i == 0) {
+        for (int i = 1; i <= target / 2; i++) {
+            if (target % i == 0) {
                 count++;
             }
         }
         
-        return count % 2 == 0;
+        count++; // 자기 자신 포함.
+        
+        return count % 2 == 0 ? target : (-1) * target;
     }
 }
