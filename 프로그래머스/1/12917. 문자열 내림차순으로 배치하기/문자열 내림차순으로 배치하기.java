@@ -1,18 +1,21 @@
-import java.util.*;
+import java.util.stream.*;
 
 class Solution {
     public String solution(String s) {
-        String answer = "";
         
-        String[] str = s.split("");
-        Arrays.sort(str);
+        String upperString = s.chars()
+            .filter(c -> c >= 'A' && c <= 'Z')
+            .sorted()
+            .mapToObj(c -> String.valueOf((char) c))
+            .collect(Collectors.joining());
         
-        for (String key: str) {
-            answer += key;
-        }
+        String lowerString = s.chars()
+            .filter(c -> c >= 'a' && c <= 'z')
+            .sorted()
+            .mapToObj(c -> String.valueOf((char) c))
+            .collect(Collectors.joining());
         
-        StringBuilder sb = new StringBuilder(answer);
-        sb.reverse();
-        return sb.toString();
+        return new StringBuilder(lowerString).reverse().toString() + 
+            new StringBuilder(upperString).reverse().toString();
     }
 }
