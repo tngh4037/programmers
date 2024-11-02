@@ -1,18 +1,21 @@
 class Solution {
     public int[] solution(String s) {
-        int[] answer = new int[2];
+        String temp = s;
+        int count = 0;
+        int removeSum = 0;
 
-        String str = s;
-        while (!str.equals("1")) {
-            int beforeLength = str.length();
-            String removedStr = str.replace("0", "");
+        while (true) {
+            count++;
+            String replaceStr = temp.replace("0", "");
+            removeSum += (temp.length() - replaceStr.length());
+        
+            if (replaceStr.equals("1")) {
+                break;
+            }
             
-            str = Integer.toBinaryString(removedStr.length());
-            
-            answer[0]++;
-            answer[1] = answer[1] + (beforeLength - removedStr.length());
+            temp = Integer.toBinaryString(replaceStr.length());
         }
         
-        return answer;
+        return new int[]{count, removeSum};
     }
 }
