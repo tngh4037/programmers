@@ -1,16 +1,13 @@
 import java.util.Arrays;
-import java.util.stream.IntStream;
 
 class Solution {
     public int[] solution(int[] num_list, int n) {
-        int[] first = Arrays.stream(num_list)
-            .skip(n)
-            .toArray();
+        int[] target1 = Arrays.copyOf(num_list, n);
+        int[] target2 = Arrays.copyOfRange(num_list, n, num_list.length);
         
-        int[] last = Arrays.stream(num_list)
-            .limit(n)
-            .toArray();
+        int[] answer = Arrays.copyOf(target2, target1.length + target2.length);
+        System.arraycopy(target1, 0, answer, target2.length, target1.length);
         
-        return IntStream.concat(Arrays.stream(first), Arrays.stream(last)).toArray();
+        return answer;
     }
 }
