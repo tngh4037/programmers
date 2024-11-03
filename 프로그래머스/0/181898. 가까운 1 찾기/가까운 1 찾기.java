@@ -1,16 +1,12 @@
+import java.util.stream.*;
+
 class Solution {
     public int solution(int[] arr, int idx) {
-        for (int i = 0; i < arr.length; i++) {
-            if (i < idx) {
-                continue;
-            }
-            
-            if (arr[i] == 1) {
-                return i;
-            }
-        }
-        
-        
-        return -1;
+      
+        return IntStream.range(0, arr.length)
+            .filter(i -> i >= idx)
+            .filter(i -> arr[i] == 1)
+            .findFirst()
+            .orElse(-1);
     }
 }
