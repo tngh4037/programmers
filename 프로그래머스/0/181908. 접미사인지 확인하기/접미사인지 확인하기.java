@@ -1,18 +1,11 @@
-import java.util.*;
+import java.util.stream.*;
 
 class Solution {
     public int solution(String my_string, String is_suffix) {
-        List<String> strs = new ArrayList<>();
-        for (int i = 0; i < my_string.length(); i++) {
-            strs.add(my_string.substring(i, my_string.length()));
-        }
         
-        for (String str: strs) {
-            if (str.equals(is_suffix)) {
-                return 1;
-            }
-        }
-        
-        return 0;
+        return IntStream.range(0, my_string.length())
+            .filter(i -> my_string.substring(i).equals(is_suffix))
+            .findFirst()
+            .orElse(-1) >= 0 ? 1 : 0;
     }
 }
