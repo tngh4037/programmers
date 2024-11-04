@@ -1,19 +1,24 @@
+import java.util.stream.*;
+
 class Solution {
     public String solution(int[] numLog) {
-        StringBuilder result = new StringBuilder();
-        for (int i = 1; i < numLog.length; i++) {
-            int sepValue = numLog[i] - numLog[i-1];
-            if (sepValue == 1) {
-                result.append("w");
-            } else if (sepValue == -1) {
-                result.append("s");
-            } else if (sepValue == 10) {
-                result.append("d");
-            } else if (sepValue == -10) {
-                result.append("a");
-            }
-        }
-        
-        return result.toString();
+
+        return IntStream.range(1, numLog.length)
+            .mapToObj(operand -> get(numLog[operand-1], numLog[operand]))
+            .collect(Collectors.joining());
     }
+    
+    public String get(int beforeNum, int afterNum) {
+        int num = afterNum - beforeNum;
+        if (num == 1) {
+            return "w";
+        } else if (num == -1) {
+            return "s";
+        } else if (num == 10) {
+            return "d";
+        } else {
+            return "a";
+        }
+    }
+    
 }
