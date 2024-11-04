@@ -1,16 +1,14 @@
-import java.util.*;
+import java.util.stream.*;
+import java.util.Arrays;
 
 class Solution {
     public String[] solution(String my_string) {
-        String[] answer = {};
+        String[] answer = IntStream.range(0, my_string.length())
+            .mapToObj(i -> my_string.substring(i))
+            .toArray(String[]::new);
         
-        List<String> strs = new ArrayList<>();
-        for (int i = 0; i < my_string.length(); i++) {
-            strs.add(my_string.substring(i));
-        }
-
-        Collections.sort(strs);
-
-        return strs.stream().toArray(String[]::new);
+        Arrays.sort(answer);
+            
+        return answer;
     }
 }
