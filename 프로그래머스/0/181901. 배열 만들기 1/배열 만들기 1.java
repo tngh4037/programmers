@@ -1,14 +1,10 @@
-import java.util.*;
+import java.util.stream.*;
 
 class Solution {
     public int[] solution(int n, int k) {
-        List<Integer> lists = new ArrayList<>();
-        for (int i = 1; i <= n; i++) {
-            if (i % k == 0) {
-                lists.add(i);
-            }
-        }
-        
-        return lists.stream().mapToInt(Integer::intValue).toArray();
+
+        return IntStream.rangeClosed(1, n)
+            .filter(i -> i % k == 0)
+            .toArray();
     }
 }
