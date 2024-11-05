@@ -1,17 +1,8 @@
 class Solution {
     public int solution(int a, int b) {
-        int answer = 0;
-        
-        String strA = String.valueOf(a);
-        String strB = String.valueOf(b);
-        
-        int target1 = Integer.parseInt(strA + strB);
-        int target2 = Integer.parseInt(strB + strA);
-        
-        if (target1 < target2) {
-            return target2;
-        }
-        
-        return target1;
+        int target1 = Integer.parseInt("" + a + b);
+        int target2 = Integer.parseInt("" + b + a);
+
+        return target1 >= target2 ? target1 : target2;
     }
 }
