@@ -1,11 +1,11 @@
+import java.util.Arrays;
+
 class Solution {
     public int solution(int n) {
-        int answer = 0;
+        String n_str = "" + n;
         
-        for (String str: String.valueOf(n).split("")) {
-            answer += Integer.parseInt(str);
-        }
-        
-        return answer;
+        return Arrays.stream(n_str.split(""))
+            .mapToInt(s -> Integer.parseInt(s))
+            .sum();
     }
 }
