@@ -1,13 +1,13 @@
+import java.util.Arrays;
+
 class Solution {
     public String solution(String[] my_strings, int[][] parts) {
-        String answer = "";
-        
+
+        int index = 0;
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < my_strings.length; i++) {
-            String string = my_strings[i];
-            int[] part = parts[i];
-            
-            sb.append(string.substring(part[0], part[1] + 1));
+        for (int[] part : parts) {
+            sb.append(my_strings[index].substring(part[0], part[1] + 1));
+            index++;
         }
         
         return sb.toString();
