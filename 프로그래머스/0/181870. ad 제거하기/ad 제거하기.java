@@ -1,16 +1,10 @@
-import java.util.*;
+import java.util.Arrays;
 
 class Solution {
     public String[] solution(String[] strArr) {
-        String[] answer = {};
-        
-        List<String> arrs = new ArrayList<>();
-        for (String str: strArr) {
-            if (!str.contains("ad")) {
-                arrs.add(str);
-            }
-        }
-        
-        return arrs.toArray(String[]::new);
+
+        return Arrays.stream(strArr)
+            .filter(str -> !str.contains("ad"))
+            .toArray(String[]::new);
     }
 }
