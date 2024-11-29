@@ -2,22 +2,19 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int n) {
-        int[] answer = {};
+        List<Integer> answer = new ArrayList<>();
+        answer.add(n);
         
-        List<Integer> arrs = new ArrayList<>();
-        arrs.add(n);
-        
-        int target = n;
-        while(target != 1) {
-            if (target % 2 == 0) {
-                target = target / 2;
-                arrs.add(target);
+        while (n != 1) {
+            if (n % 2 == 0) {
+                n = n / 2;
             } else {
-                target = 3 * target + 1;
-                arrs.add(target);
+                n = 3 * n + 1;
             }
+            
+            answer.add(n);
         }
-        
-        return arrs.stream().mapToInt(Integer::intValue).toArray();
+
+        return answer.stream().mapToInt(Integer::intValue).toArray();
     }
 }
