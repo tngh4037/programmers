@@ -1,14 +1,8 @@
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
 
 class Solution {
     public int solution(int[] sides) {
         Arrays.sort(sides);
-        
-        int maxLength = sides[sides.length - 1];
-        
-        int sum = IntStream.of(sides).sum();
-
-        return (sum - maxLength) > maxLength ? 1 : 2;
+        return sides[2] < sides[0] + sides[1] ? 1 : 2;
     }
 }
