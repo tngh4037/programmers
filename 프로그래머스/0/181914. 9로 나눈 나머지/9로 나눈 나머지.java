@@ -1,10 +1,10 @@
+import java.util.Arrays;
+
 class Solution {
     public int solution(String number) {
-        int sum = 0;
-        for (char num: number.toCharArray()) {
-            sum += Integer.parseInt(Character.toString(num));
-        }
-        
-        return sum % 9;
+
+        return Arrays.stream(number.split(""))
+            .mapToInt(Integer::parseInt)
+            .sum() % 9;
     }
 }
