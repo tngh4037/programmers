@@ -1,18 +1,18 @@
 class Solution {
     public int solution(String binomial) {
-        String[] strArr = binomial.split(" ");
+        int answer = 0;
         
-        int num1 = Integer.parseInt(strArr[0]);
-        int num2 = Integer.parseInt(strArr[2]);
-        switch (strArr[1]) {
-            case "+":
-                return num1 + num2;
-            case "-" :
-                return num1 - num2;
-            case "*":
-                return num1 * num2;
-            default:
-                return 0;
-        }
+        String[] q = binomial.split(" ");
+        String op = q[1];
+        
+        if (op.equals("+")) {
+            return Integer.parseInt(q[0]) + Integer.parseInt(q[2]);
+        } else if (op.equals("-")) {
+            return Integer.parseInt(q[0]) - Integer.parseInt(q[2]);
+        } else if (op.equals("*")) {
+            return Integer.parseInt(q[0]) * Integer.parseInt(q[2]);
+        } 
+        
+        return answer;
     }
 }
