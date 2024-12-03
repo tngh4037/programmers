@@ -1,21 +1,13 @@
-import java.util.*;
+import java.util.Arrays;
 
 class Solution {
     public String[] solution(String myString) {
-        String[] strArr = myString.split("x");
+        String[] filteredArr = myString.split("x");
         
-        List<String> strs = new ArrayList<>();
-        for (String str: strArr) {
-            String target = str.trim();
-            if (!target.isEmpty()) {
-                strs.add(target);
-            }
-        }
-        
-        strArr = strs.toArray(String[]::new);
-        
-        Arrays.sort(strArr);
-
-        return strArr;
+        return Arrays.stream(filteredArr)
+            .map(str -> str.trim())
+            .filter(str -> str.length() > 0)
+            .sorted()
+            .toArray(String[]::new);
     }
 }
