@@ -1,18 +1,15 @@
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 class Solution {
     public String solution(String my_string, int[] indices) {
-        String answer = "";
+        String[] splitArr = my_string.split("");
         
-        String[] strs = my_string.split("");
-        for (int indice: indices) {
-            strs[indice] = "";
-        }
-        
-        for (String str: strs) {
-            if (!str.equals("")) {
-                answer += str;
-            }
-        }
-        
-        return answer;
+        Arrays.stream(indices)
+            .forEach(i -> splitArr[i] = "0");
+
+        return Arrays.stream(splitArr)
+            .filter(s -> !s.equals("0"))
+            .collect(Collectors.joining());
     }
 }
