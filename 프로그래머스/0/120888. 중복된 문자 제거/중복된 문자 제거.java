@@ -1,9 +1,8 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 class Solution {
     public String solution(String my_string) {
-        String[] strArr = Arrays.stream(my_string.split("")).distinct().toArray(String[]::new);
-
-        return String.join("", strArr);
+        return Arrays.stream(my_string.split("")).distinct().collect(Collectors.joining());
     }
 }
