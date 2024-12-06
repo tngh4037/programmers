@@ -1,20 +1,14 @@
 import java.util.*;
+import java.util.stream.IntStream;
 
 class Solution {
     public int[] solution(int[] numbers) {
-        int[] answer = {};
+        Set<Integer> numSet = new HashSet<>();
+        IntStream.range(0, numbers.length - 1)
+                    .forEach(num -> IntStream.range(num+1, numbers.length)
+                                    .forEach(i -> numSet.add(numbers[num] + numbers[i]))
+                    );
         
-        List<Integer> nums = new ArrayList<>();
-        for (int i = 0; i < numbers.length; i++) {
-            for (int j = i+1; j < numbers.length; j++) { 
-                nums.add(numbers[i] + numbers[j]);
-            }
-        }
-        
-        answer = nums.stream().mapToInt(Integer::intValue).distinct().toArray();
-
-        Arrays.sort(answer);
-            
-        return answer;
+        return numSet.stream().sorted().mapToInt(Integer::intValue).toArray();
     }
 }
