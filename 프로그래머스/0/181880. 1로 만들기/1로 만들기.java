@@ -1,27 +1,26 @@
+import java.util.Arrays;
+
 class Solution {
     public int solution(int[] num_list) {
-        int totalCount = 0;
         
-        for (int num: num_list) {
-            int count = 0;
-         
-            while (true) {
-                if (num == 1) {
-                    break;
-                }
-                
-                if (num % 2 == 0) {
-                    num = num / 2;
-                } else {
-                    num = (num - 1) / 2;
-                }
-                
-                count++;
+        return Arrays.stream(num_list)
+            .map(num -> calculate(num))
+            .sum();
+    }
+    
+    private int calculate(int num) {
+        int count = 0;
+        
+        while (num != 1) {
+            if (num % 2 == 0) {
+                num = num / 2;
+            } else {
+                num = (num - 1) / 2;
             }
             
-            totalCount += count;
+            count++;
         }
         
-        return totalCount;
+        return count;
     }
 }
