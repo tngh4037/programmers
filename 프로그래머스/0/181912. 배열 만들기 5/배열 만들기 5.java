@@ -1,15 +1,12 @@
-import java.util.*;
+import java.util.Arrays;
 
 class Solution {
     public int[] solution(String[] intStrs, int k, int s, int l) {
-        List<Integer> arrs = new ArrayList<>();
-        for (String intStr: intStrs) {
-            int num = Integer.parseInt(intStr.substring(s, s + l));
-            if (num > k) {
-                arrs.add(num);
-            }
-        }
-        
-        return arrs.stream().mapToInt(Integer::intValue).toArray();
+
+        return Arrays.stream(intStrs)
+            .map(str -> str.substring(s, s+l))
+            .mapToInt(Integer::parseInt)
+            .filter(num -> num > k)
+            .toArray();
     }
 }
