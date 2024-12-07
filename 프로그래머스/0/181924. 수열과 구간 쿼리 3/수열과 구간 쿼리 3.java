@@ -1,15 +1,16 @@
+import java.util.List;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.stream.Collectors;
+
 class Solution {
     public int[] solution(int[] arr, int[][] queries) {
-
+        List<Integer> arrList = Arrays.stream(arr).boxed().collect(Collectors.toList());
+        
         for (int[] query: queries) {
-            int target1 = query[0]; 
-            int target2 = query[1]; 
-            
-            int temp = arr[target1];
-            arr[target1] = arr[target2];
-            arr[target2] = temp;
+            Collections.swap(arrList, query[0], query[1]);
         }
         
-        return arr;
+        return arrList.stream().mapToInt(Integer::intValue).toArray();
     }
 }
