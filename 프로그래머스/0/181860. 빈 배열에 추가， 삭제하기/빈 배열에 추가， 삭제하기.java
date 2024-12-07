@@ -1,21 +1,19 @@
 import java.util.*;
+import java.util.stream.*;
 
 class Solution {
     public int[] solution(int[] arr, boolean[] flag) {
-        List<Integer> lists = new ArrayList<>();
-        for(int i = 0; i < flag.length; i++) {
-            if (flag[i]) {
-                int loopCount = arr[i] * 2;
-                for (int j = 0; j < loopCount; j++) {
-                    lists.add(arr[i]);
-                }
-            } else {
-                for (int j = 0; j < arr[i]; j++) {
-                    lists.remove(lists.size() - 1);
-                }
-            }
-        }
+        Deque<Integer> store = new ArrayDeque<>();
 
-        return lists.stream().mapToInt(Integer::intValue).toArray();
+        IntStream.range(0, flag.length)
+            .forEach(i -> {
+                    if (flag[i]) {
+                        IntStream.range(0, arr[i]*2).forEach(j -> store.offerLast(arr[i]));
+                    } else {
+                        IntStream.range(0, arr[i]).forEach(j -> store.removeLast());
+                    }
+            });
+
+        return store.stream().mapToInt(Integer::intValue).toArray();
     }
 }
