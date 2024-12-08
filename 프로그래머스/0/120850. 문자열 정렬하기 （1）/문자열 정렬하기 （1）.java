@@ -1,9 +1,12 @@
-import java.util.*;
+import java.util.Arrays;
 
 class Solution {
     public int[] solution(String my_string) {
-        String str = my_string.replaceAll("[^0-9]", "");
 
-        return Arrays.stream(str.split("")).sorted().mapToInt(Integer::parseInt).toArray();
+        return my_string.chars()
+            .filter(Character::isDigit)
+            .map(i -> i - '0')
+            .sorted()
+            .toArray();
     }
 }
