@@ -1,18 +1,12 @@
+import java.util.stream.IntStream;
+import java.util.stream.Collectors;
+
 class Solution {
     public String solution(String my_string, int m, int c) {
-        String[] strArr = my_string.split("");
-        String answer = "";
-        String temp = "";
-        
-        for (int i = 0; i < strArr.length; i++) {
-            temp += strArr[i];
-            
-            if ((i+1) % m == 0) {
-                answer += String.valueOf(temp.charAt(c - 1));
-                temp = "";
-            }
-        }
-        
-        return answer;
+        int rowCount = my_string.length() / m;
+ 
+        return IntStream.range(0, rowCount)
+            .mapToObj(i -> my_string.substring(i*m, (i+1)*m).substring(c-1, c))
+            .collect(Collectors.joining());
     }
 }
