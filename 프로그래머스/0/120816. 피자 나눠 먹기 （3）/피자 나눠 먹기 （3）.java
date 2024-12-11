@@ -1,17 +1,12 @@
 class Solution {
     public int solution(int slice, int n) {
-        int answer = 0;
-        
-        int sum = 0;
+        int count = 1;
         while (true) {
-            sum += slice;
-            answer++;
-            
-            if (sum >= n) {
-                break;
+            if ((slice * count) >= n) {
+                return count;
             }
+            
+            count++;
         }
-        
-        return answer;
     }
 }
