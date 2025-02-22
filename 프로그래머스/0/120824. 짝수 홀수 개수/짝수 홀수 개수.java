@@ -1,15 +1,15 @@
-import java.util.Arrays;
+import java.util.stream.IntStream;
 
 class Solution {
     public int[] solution(int[] num_list) {
-        int evenCount = (int) Arrays.stream(num_list)
-            .filter(num -> num % 2 == 0)
-            .count();
-        
-        int oddCount = (int) Arrays.stream(num_list)
-            .filter(num -> num % 2 != 0)
-            .count();
-        
-        return new int[]{evenCount, oddCount};
+
+        return new int[]{
+            (int) IntStream.range(0, num_list.length)
+            .filter(i -> num_list[i] % 2 == 0)
+            .count(), 
+            (int) IntStream.range(0, num_list.length)
+            .filter(i -> num_list[i] % 2 != 0)
+            .count()
+        };
     }
 }
