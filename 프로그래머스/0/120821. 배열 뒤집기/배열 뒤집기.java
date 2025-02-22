@@ -1,10 +1,12 @@
-import java.util.stream.IntStream;
+import java.util.Collections;
+import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.List;
 
 class Solution {
     public int[] solution(int[] num_list) {
-
-        return IntStream.range(0, num_list.length)
-            .map(i -> num_list[(num_list.length-1) - i])
-            .toArray();
+        List<Integer> nums = Arrays.stream(num_list).mapToObj(Integer::valueOf).collect(Collectors.toList());
+        Collections.reverse(nums);
+        return nums.stream().mapToInt(Integer::intValue).toArray();
     }
 }
