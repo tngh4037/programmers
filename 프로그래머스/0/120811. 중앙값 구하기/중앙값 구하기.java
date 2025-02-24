@@ -1,9 +1,9 @@
-import java.util.*;
+import java.util.Arrays;
 
 class Solution {
     public int solution(int[] array) {
-        int[] sortedArray = Arrays.stream(array).sorted().toArray();
+        Arrays.sort(array);
         
-        return sortedArray[(array.length / 2)];
+        return array[array.length / 2];
     }
 }
