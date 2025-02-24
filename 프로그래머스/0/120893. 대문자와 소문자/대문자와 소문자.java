@@ -1,20 +1,10 @@
-import java.util.stream.*;
+import java.util.stream.Collectors;
 
 class Solution {
     public String solution(String my_string) {
-     
+
         return my_string.chars()
-            .mapToObj(c -> (char) c)
-            .map(String::valueOf)
-            .map(s -> {
-                int code = s.charAt(0);
-                
-                if (code >= 'a' && code <= 'z') {
-                    return s.toUpperCase();
-                } else {
-                    return s.toLowerCase();
-                }
-            })
+            .mapToObj(c -> c - 'a' < 0 ? String.valueOf((char) c).toLowerCase() : String.valueOf((char) c).toUpperCase())
             .collect(Collectors.joining());
     }
 }
