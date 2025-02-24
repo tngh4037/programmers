@@ -7,8 +7,6 @@ public class Solution {
         int n = sc.nextInt();
 
         IntStream.rangeClosed(1, n)
-            .forEach(i -> {
-                System.out.println("*".repeat(i));
-            });
+            .forEach(i -> System.out.println("*".repeat(i)));
     }
 }
