@@ -1,12 +1,6 @@
 class Solution {
     public int solution(int slice, int n) {
-        int count = 1;
-        while (true) {
-            if ((slice * count) >= n) {
-                return count;
-            }
-            
-            count++;
-        }
+
+        return n / slice + ((n % slice > 0) ? 1 : 0);
     }
 }
