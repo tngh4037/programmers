@@ -1,16 +1,11 @@
 class Solution {
     public int solution(int hp) {
-        int ant1 = hp / 5;
-        hp = hp % 5;
+        int king = hp / 5;
+        hp = hp - (king * 5);
         
-        int ant2 = hp / 3;
-        hp = hp % 3;
+        int mid = hp / 3;
+        hp = hp - (mid * 3);
         
-        int ant3 = hp;
-        
-        return ant1 + ant2 + ant3;
+        return king + mid + hp;
     }
 }
-// 장군개미: 5
-// 병정개미: 3
-// 일개미: 1
