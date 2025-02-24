@@ -7,6 +7,6 @@ class Solution {
         int target1 = numbers[0] * numbers[1];
         int target2 = numbers[numbers.length - 2] * numbers[numbers.length - 1];
             
-        return target1 > target2 ? target1 : target2;
+        return Math.max(target1, target2);
     }
 }
