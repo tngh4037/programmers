@@ -1,9 +1,11 @@
-import java.util.Arrays;
+import java.util.stream.IntStream;
 
 class Solution {
     public int[] solution(int n, int[] numlist) {
-        return Arrays.stream(numlist)
-            .filter(num -> num % n == 0)
+
+        return IntStream.range(0, numlist.length)
+            .filter(i -> numlist[i] % n == 0)
+            .map(i -> numlist[i])
             .toArray();
     }
 }
