@@ -1,18 +1,18 @@
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 class Solution {
     public int[] solution(int[] array) {
-        int maxValue = Arrays.stream(array)
-            .max().orElse(-1);
+        int[] copyArray = Arrays.copyOfRange(array, 0, array.length);
         
-        int index = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == maxValue) {
-                index = i;
-                break;
-            }
-        }
+        Arrays.sort(array);
         
-        return new int[]{maxValue, index};
+        int maxValue = array[array.length - 1];
+        
+        int[] indexs = IntStream.range(0, copyArray.length)
+            .filter(i -> copyArray[i] == maxValue)
+            .toArray();
+        
+        return new int[]{maxValue, indexs[0]};
     }
 }
