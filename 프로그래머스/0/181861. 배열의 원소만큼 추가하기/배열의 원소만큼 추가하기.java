@@ -1,19 +1,11 @@
-import java.util.stream.*;
-import java.util.*;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
 class Solution {
     public int[] solution(int[] arr) {
-        int[] answer = new int[IntStream.of(arr).sum()];
-        
-        List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < arr.length; i++) {
-            int num = arr[i];
-            
-            for (int j = 0; j < num; j++) {
-                result.add(num);
-            }
-        }
-        
-        return result.stream().mapToInt(Integer::intValue).toArray();
+
+        return Arrays.stream(arr)
+            .flatMap(i -> IntStream.range(0, i).map(j -> i))
+            .toArray();
     }
 }
