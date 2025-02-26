@@ -1,21 +1,18 @@
-import java.util.stream.*;
-import java.util.*;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 class Solution {
-    
     public int solution(int[] num_list) {
-        int answer = 0;
+        int oddSum = Integer.parseInt(Arrays.stream(num_list)
+            .filter(num -> num % 2 != 0)
+            .mapToObj(String::valueOf)
+            .collect(Collectors.joining()));
         
-        String str1 = IntStream.range(0, num_list.length)
-            .filter(i -> num_list[i] % 2 != 0)
-            .mapToObj(i -> String.valueOf(num_list[i]))
-            .collect(Collectors.joining());
+        int evenSum = Integer.parseInt(Arrays.stream(num_list)
+            .filter(num -> num % 2 == 0)
+            .mapToObj(String::valueOf)
+            .collect(Collectors.joining()));
         
-        String str2 = IntStream.range(0, num_list.length)
-            .filter(i -> num_list[i] % 2 == 0)
-            .mapToObj(i -> String.valueOf(num_list[i]))
-            .collect(Collectors.joining());
-        
-        return Integer.parseInt(str2) + Integer.parseInt(str1);
+        return oddSum + evenSum;
     }
 }
