@@ -2,11 +2,15 @@ import java.util.Arrays;
 
 class Solution {
     public int solution(int[] num_list) {
-        int sumAll = Arrays.stream(num_list).sum();
+        int answer = 0;
         
-        int multiplyAll = Arrays.stream(num_list)
-            .reduce(1, (before, after) -> before * after);
+        int multiply = 1;
+        for (int num : num_list) {
+            multiply = num * multiply;
+        }
         
-        return multiplyAll < Math.pow(sumAll, 2) ? 1 : 0;
+        int sum = Arrays.stream(num_list).sum();
+        
+        return (multiply > (sum * sum)) ? 0 : 1;
     }
 }
