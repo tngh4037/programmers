@@ -1,22 +1,10 @@
-import java.util.stream.*;
+import java.util.stream.IntStream;
 
 class Solution {
     public int[] solution(int[] arr, int n) {
-        return IntStream.rangeClosed(0, arr.length-1)
-            .map(i -> {
-                if (arr.length % 2 == 0) {
-                    if (i % 2 != 0) {
-                        return arr[i] + n;
-                    } else {
-                        return arr[i];
-                    }
-                } else {
-                    if (i % 2 == 0) {
-                        return arr[i] + n;
-                    } else {
-                        return arr[i];
-                    }
-                }
-            }).toArray();
+        
+        return arr.length % 2 == 0 ?
+            IntStream.range(0, arr.length).map(i -> i % 2 != 0 ? arr[i] + n : arr[i]).toArray() :
+            IntStream.range(0, arr.length).map(i -> i % 2 == 0 ? arr[i] + n : arr[i]).toArray();
     }
 }
