@@ -1,5 +1,10 @@
+import java.util.Arrays;
+
 class Solution {
     public String[] solution(String my_string) {
-        return my_string.trim().split("\\s+");
+
+        return Arrays.stream(my_string.split(" "))
+            .filter(s -> !s.equals(""))
+            .toArray(String[]::new);
     }
 }
