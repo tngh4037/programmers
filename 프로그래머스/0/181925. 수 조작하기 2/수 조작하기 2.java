@@ -1,24 +1,20 @@
-import java.util.stream.*;
-
 class Solution {
     public String solution(int[] numLog) {
-
-        return IntStream.range(1, numLog.length)
-            .mapToObj(operand -> get(numLog[operand-1], numLog[operand]))
-            .collect(Collectors.joining());
-    }
-    
-    public String get(int beforeNum, int afterNum) {
-        int num = afterNum - beforeNum;
-        if (num == 1) {
-            return "w";
-        } else if (num == -1) {
-            return "s";
-        } else if (num == 10) {
-            return "d";
-        } else {
-            return "a";
+        String answer = "";
+        
+        for (int i = 0; i < numLog.length-1; i++) {
+            int result = numLog[i + 1] - numLog[i];
+            if (result == 1) {
+                answer += "w";
+            } else if (result == -1) {
+                answer += "s";
+            } else if (result == 10) {
+                answer += "d"; 
+            } else {
+                answer += "a";
+            }
         }
+        
+        return answer;
     }
-    
 }
