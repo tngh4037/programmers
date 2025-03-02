@@ -1,15 +1,11 @@
-import java.util.Arrays;
+import java.util.stream.IntStream;
+import java.util.stream.Collectors;
 
 class Solution {
     public String solution(String[] my_strings, int[][] parts) {
 
-        int index = 0;
-        StringBuilder sb = new StringBuilder();
-        for (int[] part : parts) {
-            sb.append(my_strings[index].substring(part[0], part[1] + 1));
-            index++;
-        }
-        
-        return sb.toString();
+        return IntStream.range(0, parts.length)
+            .mapToObj(i -> my_strings[i].substring(parts[i][0], parts[i][1] + 1))
+            .collect(Collectors.joining());
     }
 }
