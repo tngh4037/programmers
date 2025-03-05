@@ -1,11 +1,10 @@
-import java.util.Arrays;
-
 class Solution {
     public int[] solution(String my_string) {
+        int[] answer = {};
 
         return my_string.chars()
             .filter(Character::isDigit)
-            .map(i -> i - '0')
+            .map(c -> c - '0')
             .sorted()
             .toArray();
     }
