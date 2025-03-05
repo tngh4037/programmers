@@ -1,10 +1,11 @@
-import java.util.stream.*;
+import java.util.stream.Collectors;
 
 class Solution {
     public String solution(String myString) {
 
         return myString.chars()
-            .mapToObj(c -> (c < 'l') ? "l" : String.valueOf((char) c))
+            .map(c -> c - 'l' < 0 ? 'l' : c)
+            .mapToObj(c -> String.valueOf((char) c))
             .collect(Collectors.joining());
     }
 }
