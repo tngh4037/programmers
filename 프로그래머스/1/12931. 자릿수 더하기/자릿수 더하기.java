@@ -1,10 +1,10 @@
-import java.util.*;
+import java.util.Arrays;
 
 public class Solution {
     public int solution(int n) {
-        String str = String.valueOf(n);
+        String strN = "" + n;
 
-        return Arrays.stream(str.split(""))
+        return Arrays.stream(strN.split(""))
             .mapToInt(Integer::parseInt)
             .sum();
     }
