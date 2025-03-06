@@ -1,10 +1,10 @@
-import java.util.stream.IntStream;
+import java.util.Arrays;
 
 class Solution {
     public int[] solution(int[] arr, int k) {
-
-        return k % 2 == 0 ? 
-            IntStream.of(arr).map(i -> i + k).toArray() : 
-            IntStream.of(arr).map(i -> i * k).toArray();
+  
+        return k % 2 == 0 ?
+            Arrays.stream(arr).map(i -> i + k).toArray() :
+            Arrays.stream(arr).map(i -> i * k).toArray();
     }
 }
