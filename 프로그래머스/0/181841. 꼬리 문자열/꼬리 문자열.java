@@ -1,12 +1,11 @@
 import java.util.Arrays;
-import java.util.stream.*;
-import java.util.function.*;
+import java.util.stream.Collectors;
 
 class Solution {
     public String solution(String[] str_list, String ex) {
 
         return Arrays.stream(str_list)
-            .filter(Predicate.not(str -> str.contains(ex)))
+            .filter(s -> !s.contains(ex))
             .collect(Collectors.joining());
     }
 }
