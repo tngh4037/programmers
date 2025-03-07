@@ -1,9 +1,15 @@
-import java.util.Arrays;
+import java.util.stream.IntStream;
+import java.util.Collections;
 
 class Solution {
     public int[] solution(int[] num_list) {
-        Arrays.sort(num_list);
         
-        return Arrays.copyOfRange(num_list, 5, num_list.length);
+        return IntStream.of(num_list)
+            .boxed()
+            .sorted(Collections.reverseOrder())
+            .limit(num_list.length - 5)
+            .mapToInt(Integer::intValue)
+            .sorted()
+            .toArray();
     }
 }
