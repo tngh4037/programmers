@@ -1,23 +1,24 @@
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 
 class Solution {
     public int[] solution(String myString) {
-        List<Integer> answer = new ArrayList<>();
+        List<Integer> stores = new ArrayList<>();
         
         int count = 0;
-        char[] myChars = myString.toCharArray();
-        for (char chr : myChars) {
-            if (chr == 'x') {
-                answer.add(count);
+        for (String str : myString.split("")) {
+            
+            if (str.equals("x")) {
+                stores.add(count);    
                 count = 0;
                 continue;
             }
             
             count++;
         }
-
-        answer.add(count);
         
-        return answer.stream().mapToInt(Integer::intValue).toArray();
+        stores.add(count);
+        
+        return stores.stream().mapToInt(Integer::intValue).toArray();
     }
 }
