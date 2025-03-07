@@ -1,12 +1,12 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 class Solution {
     public String solution(String my_string) {
-        String lower_str = my_string.toLowerCase();
-        String[] arrs = lower_str.split("");
-        
-        Arrays.sort(arrs);
 
-        return String.join("", arrs);
+        return Arrays.stream(my_string.split(""))
+            .map(s -> s.toLowerCase())
+            .sorted()
+            .collect(Collectors.joining());
     }
 }
