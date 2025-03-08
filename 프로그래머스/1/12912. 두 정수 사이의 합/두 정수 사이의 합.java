@@ -1,14 +1,9 @@
-import java.util.stream.LongStream;
-
 class Solution {
     public long solution(int a, int b) {
-        if (a == b) {
-            return a;
+        long sum = 0;
+        for (int i = Math.min(a, b); i <= Math.max(a, b); i++) {
+            sum += i;
         }
-        
-        int start = a < b ? a : b;
-        int end = a > b ? a : b;
-        
-        return LongStream.rangeClosed(start, end).sum();
+        return sum;
     }
 }
