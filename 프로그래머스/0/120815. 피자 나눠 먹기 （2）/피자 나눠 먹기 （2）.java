@@ -1,17 +1,11 @@
 class Solution {
     public int solution(int n) {
-        int answer = 0;
+        int count = 1;
         
-        int sum = 0;
-        while (true) {
-            sum += 6;
-            answer++;
-            
-            if (sum % n == 0) {
-                break;
-            }
+        while ((6 * count) % n != 0) {
+            count++;
         }
         
-        return answer;
+        return count;
     }
 }
