@@ -1,10 +1,10 @@
 class Solution {
     public long solution(long n) {
-        long sqrt = (long) Math.sqrt(n);
-        if (sqrt * sqrt == n) {
-            return (sqrt+1) * (sqrt+1);
+        long result = (long) Math.sqrt(n);
+        if (n == (result * result)) {
+            return (long) ((result+1) * (result+1));
+        } else {
+            return -1;
         }
-        
-        return -1;
     }
 }
