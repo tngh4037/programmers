@@ -1,14 +1,13 @@
-import java.util.stream.*;
+import java.util.Arrays;
 
 class Solution {
     public int[] solution(int[] arr, int divisor) {
-        int[] answer = {};
-        
-        arr = IntStream.of(arr)
-            .filter(num -> num % divisor == 0)
+ 
+        int[] answer = Arrays.stream(arr)
+            .filter(i -> i % divisor == 0)
             .sorted()
             .toArray();
-        
-        return arr.length == 0 ? new int[]{-1} : arr;
+            
+        return answer.length == 0 ? new int[]{-1} : answer;
     }
 }
