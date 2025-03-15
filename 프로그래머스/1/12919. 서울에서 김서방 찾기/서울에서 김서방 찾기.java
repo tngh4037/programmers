@@ -1,11 +1,10 @@
-import java.util.*;
-import java.util.stream.*;
+import java.util.stream.IntStream;
 
 class Solution {
     public String solution(String[] seoul) {
-        List<String> slist = Arrays.stream(seoul)
-            .collect(Collectors.toList());
-        
-        return "김서방은 " + slist.indexOf("Kim") + "에 있다";
+        return "김서방은 " + IntStream.range(0, seoul.length)
+            .filter(i -> seoul[i].equals("Kim"))
+            .findFirst()
+            .orElse(-1) + "에 있다";
     }
 }
