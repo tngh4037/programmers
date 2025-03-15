@@ -1,22 +1,23 @@
 class Solution {
     public int solution(int num) {
-        long number = num;
-        if (number == 1) {
-            return 0;
-        }
+        if (num == 1) return 0;
         
-        for (int i = 1; i <= 500; i++) {
-            if (number % 2 == 0) {
-                number = number / 2;
+        int count = 0;
+        long su = num;
+        while (su != 1) {
+            if (su % 2 == 0) {
+                su = su / 2;
             } else {
-                number = (number * 3) + 1;
+                su = ((su * 3) + 1);
             }
             
-            if (number == 1) {
-                return i;
+            count++;
+            
+            if (count == 500) {
+                return -1;
             }
         }
-        
-        return -1;
+
+        return count;
     }
 }
