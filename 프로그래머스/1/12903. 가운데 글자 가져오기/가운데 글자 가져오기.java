@@ -1,12 +1,11 @@
 class Solution {
     public String solution(String s) {
-        boolean isEven = (s.length() % 2 == 0);
+        int index = s.length() / 2;
         
-        int num = s.length() / 2;
-        if (isEven) {
-            return String.valueOf(s.charAt(num-1)) + String.valueOf(s.charAt(num));
+        if (s.length() % 2 == 0) {
+            return String.valueOf(s.charAt(index-1)) + String.valueOf(s.charAt(index));
         } else {
-            return String.valueOf(s.charAt(num));
+            return String.valueOf(s.charAt(index));
         }
     }
 }
