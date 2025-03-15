@@ -1,4 +1,4 @@
-import java.util.stream.*;
+import java.util.stream.IntStream;
 
 class Solution {
     public int solution(int[] a, int[] b) {
