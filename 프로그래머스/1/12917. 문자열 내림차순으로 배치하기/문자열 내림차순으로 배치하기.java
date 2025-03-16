@@ -1,11 +1,14 @@
-import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.Collections;
 
 class Solution {
     public String solution(String s) {
-        char[] result = s.toCharArray();
-        
-        Arrays.sort(result);
-        
-        return new StringBuilder(new String(result)).reverse().toString();
+
+        return new StringBuilder().append(
+                    s.chars()
+                          .sorted()
+                          .mapToObj(Character::toString)
+                          .collect(Collectors.joining()))
+               .reverse().toString();
     }
 }
