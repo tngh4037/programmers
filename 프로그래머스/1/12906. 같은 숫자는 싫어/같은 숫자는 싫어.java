@@ -2,24 +2,18 @@ import java.util.*;
 
 public class Solution {
     public int[] solution(int[] arr) {
-        
         Stack<Integer> stack = new Stack<>();
         stack.push(arr[0]);
         
-        for (int i = 1; i < arr.length; i++) {
-            Integer beforeValue = stack.peek();
-            if (arr[i] == beforeValue) {
+        for (int su : arr) {
+            int num = stack.peek();
+            if (su == num) {
                 continue;
             }
             
-            stack.push(arr[i]);
+            stack.push(su);
         }
-        
-        int[] answer = new int[stack.size()];
-        for (int i = answer.length - 1; i >= 0; i--) {
-            answer[i] = stack.pop();
-        }
-        
-        return answer;
+
+        return stack.stream().mapToInt(Integer::intValue).toArray();
     }
 }
