@@ -1,16 +1,11 @@
-import java.util.*;
+import java.util.Arrays;
 
 class Solution {
     public int solution(int order) {
-        int answer = 0;
+        String strOrder = String.valueOf(order);
         
-        String order_str = String.valueOf(order);
-        for (String str: order_str.split("")) {
-            if (str.equals("3") || str.equals("6") || str.equals("9")) {
-                answer++;
-            }
-        }
-        
-        return answer;
+        return (int) Arrays.stream(strOrder.split(""))
+            .filter(s -> !s.equals("0") && Integer.parseInt(s) % 3 == 0)
+            .count();
     }
 }
