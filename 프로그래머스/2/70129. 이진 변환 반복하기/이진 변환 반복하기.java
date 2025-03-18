@@ -1,21 +1,20 @@
 class Solution {
     public int[] solution(String s) {
-        String temp = s;
-        int count = 0;
-        int removeSum = 0;
+        int loopCount = 0;
+        int removeCount = 0;
 
-        while (true) {
-            count++;
-            String replaceStr = temp.replace("0", "");
-            removeSum += (temp.length() - replaceStr.length());
-        
-            if (replaceStr.equals("1")) {
-                break;
-            }
+        String newStr = s;
+        while (!newStr.equals("1")) {
+            int beforeLength = newStr.length();
+            newStr = newStr.replace("0", "");
+            int afterLength = newStr.length();
             
-            temp = Integer.toBinaryString(replaceStr.length());
+            newStr = Integer.toString(afterLength, 2);
+            
+            loopCount++;
+            removeCount = removeCount + (beforeLength - afterLength);
         }
         
-        return new int[]{count, removeSum};
+        return new int[]{loopCount, removeCount};
     }
 }
