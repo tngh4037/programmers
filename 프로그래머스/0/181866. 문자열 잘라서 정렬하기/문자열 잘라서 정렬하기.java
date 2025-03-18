@@ -2,11 +2,9 @@ import java.util.Arrays;
 
 class Solution {
     public String[] solution(String myString) {
-        String[] filteredArr = myString.split("x");
-        
-        return Arrays.stream(filteredArr)
-            .map(str -> str.trim())
-            .filter(str -> str.length() > 0)
+       
+        return Arrays.stream(myString.split("x"))
+            .filter(s -> s.length() > 0)
             .sorted()
             .toArray(String[]::new);
     }
