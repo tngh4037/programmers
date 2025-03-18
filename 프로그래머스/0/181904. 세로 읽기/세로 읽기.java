@@ -1,12 +1,14 @@
-import java.util.stream.IntStream;
-import java.util.stream.Collectors;
-
 class Solution {
     public String solution(String my_string, int m, int c) {
-        int rowCount = my_string.length() / m;
- 
-        return IntStream.range(0, rowCount)
-            .mapToObj(i -> my_string.substring(i*m, (i+1)*m).substring(c-1, c))
-            .collect(Collectors.joining());
+        StringBuilder answer = new StringBuilder();
+        
+        int step = c-1;
+        while (step <= (my_string.length()-1)) {
+            answer.append(my_string.charAt(step));
+            
+            step += m;
+        }
+        
+        return answer.toString();
     }
 }
