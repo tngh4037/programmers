@@ -1,20 +1,21 @@
-import java.util.*;
+import java.util.Arrays;
 
 class Solution {
     public int solution(int[] d, int budget) {
-        int answer = 0;
-        int sum = 0;
-        
+
         Arrays.sort(d);
-        for (int num: d) {
-            sum += num;
+        
+        int sum = 0;
+        int count = 0;
+        for (int needsMoney : d) {
+            sum += needsMoney;
             if (sum > budget) {
                 break;
             }
             
-            answer++;
+            count++;
         }
         
-        return answer;
+        return count;
     }
 }
