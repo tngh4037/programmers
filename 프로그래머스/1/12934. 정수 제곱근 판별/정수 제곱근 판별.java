@@ -1,8 +1,10 @@
 class Solution {
     public long solution(long n) {
-        long result = (long) Math.sqrt(n);
-        if (n == (result * result)) {
-            return (long) ((result+1) * (result+1));
+        long target = (long) Math.sqrt(n);
+        
+        long orgN = (long) Math.pow(target, 2);
+        if (orgN == n) {
+            return (long) Math.pow(target+1, 2);
         } else {
             return -1;
         }
