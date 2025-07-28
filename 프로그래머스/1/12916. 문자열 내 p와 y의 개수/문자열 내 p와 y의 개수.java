@@ -1,10 +1,16 @@
 class Solution {
     boolean solution(String s) {
-        s = s.toLowerCase();
+
+        int orgLength = s.length();
+        int pLength = s.toLowerCase().replace("p", "").length();
+        int yLength = s.toLowerCase().replace("y", "").length();
         
-        int yLength = s.replace("y", "").length();
-        int pLength = s.replace("p", "").length();
-        
-        return yLength == pLength ? true : false;
+        if (orgLength == pLength && orgLength == yLength) {
+            return true;
+        } else if (pLength == yLength) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
