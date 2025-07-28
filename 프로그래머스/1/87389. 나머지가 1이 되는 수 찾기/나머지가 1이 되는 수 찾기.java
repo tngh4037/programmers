@@ -1,11 +1,13 @@
-import java.util.stream.IntStream;
-
 class Solution {
     public int solution(int n) {
-  
-        return IntStream.rangeClosed(1, n)
-            .filter(i -> n % i == 1)
-            .findFirst()
-            .orElse(-1);
+        int index = 1;
+        
+        while (true) {
+            if (n % index == 1) {
+                return index;
+            }
+            
+            index++;
+        }
     }
 }
