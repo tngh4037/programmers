@@ -1,20 +1,16 @@
 class Solution {
     public int[] solution(String s) {
-        int loopCount = 0;
+        int operatorCount = 0;
         int removeCount = 0;
-
-        String newStr = s;
-        while (!newStr.equals("1")) {
-            int beforeLength = newStr.length();
-            newStr = newStr.replace("0", "");
-            int afterLength = newStr.length();
+        while (!s.equals("1")) {
+            operatorCount++;
             
-            newStr = Integer.toString(afterLength, 2);
+            String temp = s.replace("0", "");
+            removeCount = removeCount + (s.length() - temp.length());
             
-            loopCount++;
-            removeCount = removeCount + (beforeLength - afterLength);
+            s = Integer.toString(temp.length(), 2);
         }
         
-        return new int[]{loopCount, removeCount};
+        return new int[]{operatorCount, removeCount};
     }
 }
