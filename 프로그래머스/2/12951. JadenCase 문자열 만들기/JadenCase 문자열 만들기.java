@@ -1,27 +1,25 @@
 class Solution {
     public String solution(String s) {
-        StringBuilder sb = new StringBuilder();
+        s = s.toLowerCase();
+        
         boolean isFirst = true;
-        char[] chars = s.toCharArray();
-        for (char chr : chars) {
-            if (Character.isDigit(chr) && isFirst) {
-                isFirst = false;
-                sb.append(chr);
-                continue;
-            }
-             
-            if (chr == ' ') {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            char chr = s.charAt(i);
+            
+            if (chr >= 'a' && chr <= 'z') {
+                if (isFirst) {
+                    sb.append(String.valueOf(chr).toUpperCase());
+                    isFirst = false;
+                    continue;
+                }
+            } else if (chr == ' ') {
                 isFirst = true;
-                sb.append(chr);
-                continue;
+            } else {
+                isFirst = false;
             }
             
-            if (isFirst) {
-                sb.append(String.valueOf(chr).toUpperCase());
-                isFirst = false;
-            } else {
-                sb.append(String.valueOf(chr).toLowerCase());
-            }
+            sb.append(chr);
         }
         
         return sb.toString();
