@@ -2,16 +2,11 @@ import java.util.Arrays;
 
 class Solution {
     public String solution(String s) {
-        int minValue = Arrays.stream(s.split(" "))
+        int[] sNum = Arrays.stream(s.split(" "))
             .mapToInt(Integer::parseInt)
-            .min()
-            .getAsInt();
+            .sorted()
+            .toArray();
         
-        int maxValue = Arrays.stream(s.split(" "))
-            .mapToInt(Integer::parseInt)
-            .max()
-            .getAsInt();
-        
-        return "" + minValue + " " + maxValue;
+        return sNum[0] + " " + sNum[sNum.length-1];
     }
 }
