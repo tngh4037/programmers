@@ -1,6 +1,13 @@
 class Solution {
     public int solution(int n) {
+        int count = 1;
+        while (true) {
+            if (((7*count) / n) >= 1) {
+                break;
+            }
 
-        return n / 7 + ((n % 7) > 0 ? 1 : 0);
+            count++;
+        }
+        return count;
     }
 }
