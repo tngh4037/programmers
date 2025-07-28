@@ -1,11 +1,13 @@
 class Solution {
     public int solution(int hp) {
-        int king = hp / 5;
-        hp = hp - (king * 5);
+        int target1 = hp / 5;
+        hp = hp - (target1 * 5);
         
-        int mid = hp / 3;
-        hp = hp - (mid * 3);
+        int target2 = hp / 3;
+        hp = hp - (target2 * 3);
         
-        return king + mid + hp;
+        int target3 = hp / 1;
+        
+        return target1 + target2 + target3;
     }
 }
