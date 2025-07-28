@@ -2,13 +2,10 @@ class Solution {
     boolean solution(String s) {
         int openCount = 0;
         
-        for (int i = 0; i < s.length(); i++) {
-            char str = s.charAt(i);
-            if (str == '(') {
+        for (char chr : s.toCharArray()) {
+            if (chr == '(') {
                 openCount++;
-            }
-            
-            if (str == ')') {
+            } else {
                 if (openCount == 0) {
                     return false;
                 }
@@ -16,7 +13,7 @@ class Solution {
                 openCount--;
             }
         }
-        
+
         return openCount == 0;
     }
 }
