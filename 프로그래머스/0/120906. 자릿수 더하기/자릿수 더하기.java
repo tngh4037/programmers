@@ -2,8 +2,9 @@ import java.util.Arrays;
 
 class Solution {
     public int solution(int n) {
-
-        return Arrays.stream(String.valueOf(n).split(""))
+        String[] strArr = (n + "").split("");
+        
+        return Arrays.stream(strArr)
             .mapToInt(Integer::parseInt)
             .sum();
     }
