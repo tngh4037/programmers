@@ -1,12 +1,13 @@
-import java.util.Collections;
-import java.util.stream.Collectors;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Deque;
+import java.util.ArrayDeque;
 
 class Solution {
     public int[] solution(int[] num_list) {
-        List<Integer> nums = Arrays.stream(num_list).mapToObj(Integer::valueOf).collect(Collectors.toList());
-        Collections.reverse(nums);
-        return nums.stream().mapToInt(Integer::intValue).toArray();
+        Deque<Integer> queue = new ArrayDeque<>();
+        for (int num: num_list) {
+            queue.push(num);
+        }
+        
+        return queue.stream().mapToInt(Integer::intValue).toArray();
     }
 }
