@@ -1,24 +1,24 @@
 class Solution {
     public int solution(int n) {
-        int count = 0;
-
-        int endValue = (n / 2);
-        for (int i = 1; i <= endValue; i++) {
+        int answer = 0;
+        int index = 1;
+        while (index <= n) {
+            int sum = 0;
             
-            int sum = i;
-            for (int j = i+1; j <= endValue + 1; j++) {
-                sum += j;
-                
+            for (int i = index; i <= n; i++) {
+                sum += i;
                 if (sum == n) {
-                    count++;
-                    break;
+                    answer++;
                 }
+                
                 if (sum > n) {
                     break;
                 }
             }
+            
+            index++;
         }
         
-        return ++count; // 자기 자신 포함
+        return answer;
     }
 }
