@@ -1,6 +1,6 @@
 class Solution {
     public int solution(int slice, int n) {
-
-        return n / slice + ((n % slice > 0) ? 1 : 0);
+        
+        return (n % slice == 0) ? n / slice : n / slice + 1;
     }
 }
