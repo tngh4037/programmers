@@ -1,15 +1,15 @@
-import java.util.stream.IntStream;
-
 class Solution {
     public int[] solution(int[] num_list) {
+        int[] answer = new int[2];
+        
+        for (int num: num_list) {
+            if (num % 2 == 0) {
+                answer[0]++;
+            } else {
+                answer[1]++;
+            }
+        }
 
-        return new int[]{
-            (int) IntStream.range(0, num_list.length)
-            .filter(i -> num_list[i] % 2 == 0)
-            .count(), 
-            (int) IntStream.range(0, num_list.length)
-            .filter(i -> num_list[i] % 2 != 0)
-            .count()
-        };
+        return answer;
     }
 }
