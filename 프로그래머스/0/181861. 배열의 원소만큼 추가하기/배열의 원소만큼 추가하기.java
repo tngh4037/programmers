@@ -1,11 +1,15 @@
-import java.util.Arrays;
-import java.util.stream.IntStream;
+import java.util.List;
+import java.util.ArrayList;
 
 class Solution {
     public int[] solution(int[] arr) {
-
-        return Arrays.stream(arr)
-            .flatMap(i -> IntStream.range(0, i).map(j -> i))
-            .toArray();
+        List<Integer> answer = new ArrayList<>();
+        for (int num: arr) {
+            for (int i = 0; i < num; i++) {
+                answer.add(num);
+            }
+        }
+        
+        return answer.stream().mapToInt(Integer::intValue).toArray();
     }
 }
