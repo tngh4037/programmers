@@ -1,15 +1,15 @@
-import java.util.stream.LongStream;
+import java.util.stream.IntStream;
 
 class Solution {
     public long solution(int price, int money, int count) {
-        long sum = LongStream.rangeClosed(1, count)
-            .map(i -> i * price)
-            .sum();
 
-        if (money >= sum) {
-            return 0;
+        long totalPrice = 0;
+        for (int i = 1; i <= count; i++) {
+            totalPrice = totalPrice + (i * price);
         }
         
-        return sum - money;
+        long needMoney = totalPrice - money;
+      
+        return needMoney > 0 ? needMoney : 0;
     }
 }
