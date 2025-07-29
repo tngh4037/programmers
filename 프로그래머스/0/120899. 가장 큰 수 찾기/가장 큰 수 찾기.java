@@ -1,12 +1,22 @@
-import java.util.List;
 import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 class Solution {
     public int[] solution(int[] array) {
-        List<Integer> list = Arrays.stream(array).boxed().collect(Collectors.toList());
-        int max = list.stream().max(Integer::compareTo).orElse(0);
-        int index = list.indexOf(max);
-        return new int[] {max, index};
+        int maxValue = Arrays.stream(array)
+            .max()
+            .orElseThrow(() -> new IllegalArgumentException());
+        
+        int index = Arrays.stream(array)
+            .boxed()
+            .collect(Collectors.toList())
+            .indexOf(maxValue);
+        
+        return new int[]{
+            maxValue,
+            index
+        };
     }
 }
