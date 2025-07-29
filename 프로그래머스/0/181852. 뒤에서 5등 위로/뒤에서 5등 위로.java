@@ -1,9 +1,9 @@
-import java.util.stream.IntStream;
+import java.util.Arrays;
 
 class Solution {
     public int[] solution(int[] num_list) {
         
-        return IntStream.of(num_list)
+        return Arrays.stream(num_list)
             .sorted()
             .skip(5)
             .toArray();
