@@ -2,18 +2,21 @@ import java.util.*;
 
 public class Solution {
     public int[] solution(int[] arr) {
-        Stack<Integer> stack = new Stack<>();
-        stack.push(arr[0]);
-        
-        for (int su : arr) {
-            int num = stack.peek();
-            if (su == num) {
+        Deque<Integer> answer = new ArrayDeque<>();
+        for (int num : arr) {
+            Integer temp = answer.peekLast();
+            if (temp == null) {
+                answer.addLast(num);
                 continue;
             }
             
-            stack.push(su);
+            if (temp.equals(num)){
+                continue;
+            }
+            
+            answer.addLast(num);
         }
-
-        return stack.stream().mapToInt(Integer::intValue).toArray();
+        
+        return answer.stream().mapToInt(Integer::intValue).toArray();
     }
 }
