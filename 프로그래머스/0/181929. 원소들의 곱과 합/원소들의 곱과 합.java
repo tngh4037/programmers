@@ -2,15 +2,9 @@ import java.util.Arrays;
 
 class Solution {
     public int solution(int[] num_list) {
-        int answer = 0;
+        int sum = (int) Math.pow(Arrays.stream(num_list).sum(), 2);
+        int multiply = Arrays.stream(num_list).reduce((acc, i) -> acc * i).getAsInt();
         
-        int multiply = 1;
-        for (int num : num_list) {
-            multiply = num * multiply;
-        }
-        
-        int sum = Arrays.stream(num_list).sum();
-        
-        return (multiply > (sum * sum)) ? 0 : 1;
+        return multiply < sum ? 1 : 0;
     }
 }
