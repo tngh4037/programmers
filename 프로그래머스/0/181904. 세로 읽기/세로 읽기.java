@@ -1,14 +1,14 @@
+import java.util.stream.IntStream;
+import java.util.stream.Collectors;
+
 class Solution {
     public String solution(String my_string, int m, int c) {
-        StringBuilder answer = new StringBuilder();
         
-        int step = c-1;
-        while (step <= (my_string.length()-1)) {
-            answer.append(my_string.charAt(step));
-            
-            step += m;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < my_string.length(); i+=m) {
+            sb.append(my_string.substring(i, i+m).charAt(c-1));
         }
         
-        return answer.toString();
+        return sb.toString();
     }
 }
