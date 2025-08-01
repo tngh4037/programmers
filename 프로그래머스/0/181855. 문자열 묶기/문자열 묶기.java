@@ -1,20 +1,20 @@
-import java.util.*;
+import java.util.Map;
+import java.util.List;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 class Solution {
     public int solution(String[] strArr) {
-        
-        int[] answer = new int[30];
-        for (int i = 0; i < strArr.length; i++) {
-            answer[strArr[i].length() - 1]++;
-        }
-        
-        int maxValue = 0;
-        for (int i = 0; i < answer.length; i++) {
-            if (maxValue < answer[i]) {
-                maxValue = answer[i];
-            }
-        }
-        
-        return maxValue;
+        Map<Integer, Long> collect = Arrays.stream(strArr)
+            .collect(Collectors.groupingBy(
+                str -> str.length(),
+                Collectors.counting()
+            ));
+       
+        return (int) collect.values()
+            .stream()
+            .mapToLong(Long::longValue)
+            .max()
+            .getAsLong();
     }
 }
