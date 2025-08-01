@@ -1,14 +1,14 @@
-import java.util.Arrays;
+import java.util.stream.IntStream;
 
 class Solution {
     public int solution(int[] num_list) {
         
-        return Arrays.stream(num_list)
-            .map(num -> calculate(num))
+        return IntStream.range(0, num_list.length)
+            .map(i -> getCount(num_list[i]))
             .sum();
     }
     
-    private int calculate(int num) {
+    private int getCount(int num) {
         int count = 0;
         
         while (num != 1) {
@@ -17,10 +17,10 @@ class Solution {
             } else {
                 num = (num - 1) / 2;
             }
-            
             count++;
         }
         
         return count;
     }
+    
 }
