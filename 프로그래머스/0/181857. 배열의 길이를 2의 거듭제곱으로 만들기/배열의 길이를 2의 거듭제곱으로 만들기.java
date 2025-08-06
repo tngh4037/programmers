@@ -1,11 +1,7 @@
 class Solution {
     public int[] solution(int[] arr) {
-        if (arr.length == 1) {
-            return arr;
-        }
-        
         int length = arr.length;
-        int index = 1;
+        int index = 0;
         
         while (true) {
             int result = (int) Math.pow(2, index);
