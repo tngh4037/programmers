@@ -1,13 +1,18 @@
-import java.util.*;
+import java.util.Arrays;
 
 class Solution {
     public int solution(String before, String after) {
-        String[] beforeArr = before.split("");
-        String[] afterArr = after.split("");
+        String[] befores = before.split("");
+        Arrays.sort(befores);
+        String[] afters = after.split("");
+        Arrays.sort(afters);
         
-        Arrays.sort(beforeArr);
-        Arrays.sort(afterArr);
+        for (int i = 0; i < befores.length; i++) {
+            if (!befores[i].equals(afters[i])) {
+                return 0;
+            }
+        }
         
-        return String.join("", beforeArr).equals(String.join("", afterArr)) ? 1 : 0;
+        return 1;
     }
 }
