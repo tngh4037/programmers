@@ -2,17 +2,17 @@ class Solution {
     public String solution(String s) {
         StringBuilder sb = new StringBuilder();
         int index = 0;
-        for (String str: s.split("")) {
-            if (str.equals(" ")) {
-                sb.append(" ");
+        for (char chr: s.toCharArray()) {
+            if (chr == ' ') {
                 index = 0;
+                sb.append(chr);
                 continue;
             }
             
             if (index % 2 == 0) {
-                sb.append(str.toUpperCase());
+                sb.append(Character.toUpperCase(chr));
             } else {
-                sb.append(str.toLowerCase());
+                sb.append(Character.toLowerCase(chr));
             }
             
             index++;
