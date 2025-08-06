@@ -1,32 +1,12 @@
-import java.util.*;
+import java.util.Arrays;
 
 class Solution {
     public String[] solution(String myStr) {
+        
+        String[] answer = Arrays.stream(myStr.split("[a|b|c]"))
+            .filter(str -> !str.isBlank())
+            .toArray(String[]::new);
        
-        String word = "";
-        List<String> answer = new ArrayList<>();
-        String[] strArr = myStr.split("");
-        for (String str: strArr) {
-            if (str.equals("a") || str.equals("b") || str.equals("c")) {
-                if (!word.isEmpty()) {
-                    answer.add(word);
-                }
-                word = "";
-                continue;
-            }
-            
-            word += str;
-        }
-        
-        if (!word.isEmpty()) {
-            answer.add(word);
-        }
-        
-        
-        if (answer.size() == 0) {
-            return new String[]{"EMPTY"};
-        }
-        
-        return answer.toArray(String[]::new);
+        return answer.length < 1 ? new String[]{"EMPTY"} : answer;
     }
 }
