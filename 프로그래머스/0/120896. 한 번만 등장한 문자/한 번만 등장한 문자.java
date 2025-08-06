@@ -1,21 +1,15 @@
-import java.util.*;
+import java.util.stream.IntStream;
+import java.util.stream.Collectors;
 
 class Solution {
     public String solution(String s) {
-        int strLength = s.length();
-
-        List<String> lists = new ArrayList<>();
-        for (String str: s.split("")) {
-            String temp = s.replace(str, "");
-            if ((strLength - 1) == temp.length()) {
-                lists.add(str);
-            }
-        }
+        int[] answer = new int[26];
         
-        String[] answer = lists.stream().toArray(String[]::new);
+        s.chars().forEach(chr -> answer[chr - 'a']++);
         
-        Arrays.sort(answer);
-        
-        return String.join("", answer);
+        return IntStream.range(0, answer.length)
+            .filter(i -> answer[i] == 1)
+            .mapToObj(i -> String.valueOf(((char) (i + 'a'))))
+            .collect(Collectors.joining());
     }
 }
